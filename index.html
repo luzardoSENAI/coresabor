@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cores e Sabor Doceria - Delícias Artesanais</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Fundo principal com a cor da paleta das imagens (burgundy escuro) */
+            background-color: #6a020f; /* Cor adaptada do burgundy das imagens */
+            color: #f1f1f1; /* Cor do texto para contraste */
+        }
+        /* Custom scrollbar for better aesthetics */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #4a0108; /* Um tom mais escuro para a trilha do scrollbar */
+            border-radius: 10px;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #b71c1c; /* Cor para o thumb do scrollbar */
+            border-radius: 10px;
+        }
+        body::-webkit-scrollbar-thumb:hover {
+            background: #d32f2f;
+        }
+
+        /* Ajuste de cores para elementos que estavam com text-gray-800 e precisam de clareza no novo fundo */
+        .text-gray-800 {
+            color: #f1f1f1; /* Altera a cor de texto padrão para light gray em fundos escuros */
+        }
+        h2.text-gray-800, h3.text-gray-800, h4.text-gray-900 {
+            color: #e909c4; /* Garante que os títulos em fundos escuros ainda se destaquem */
+        }
+        .text-gray-700 {
+            color: #d1d5db; /* Adapta o cinza mais claro para o novo fundo principal */
+        }
+
+        /* Ajuste para o texto padrão da seção Sobre Nós e Contato, que agora são bg-white */
+        #sobre .text-gray-700, #contato .text-gray-700 {
+            color: #4a5568; /* Garante legibilidade em fundos claros */
+        }
+        #sobre h2.text-gray-800, #contato h2.text-gray-800 {
+            color: #1a202c; /* Títulos em fundos claros voltam a ser escuros */
+        }
+        #produtos h3.text-gray-800 {
+             color: #e70bca; /* Título da categoria de produtos contra o fundo rosa claro */
+        }
+        .bg-white {
+            background-color: #ffffff; /* Mantém branco para cards de produto e seções agora brancas */
+        }
+        .bg-gray-50 {
+            background-color: #f9fafb; /* Mantém um cinza claro para seções de conteúdo */
+        }
+
+        /* Ajuste de cores para texto dentro dos cards de produto (que são bg-white) */
+        #produtos .bg-white .text-gray-900 {
+            color: #1a202c; /* Torna os títulos dos produtos mais escuros para legibilidade em fundo branco */
+        }
+        #produtos .bg-white .text-gray-700 {
+            color: #4a5568; /* Torna as descrições dos produtos mais escuras para legibilidade em fundo branco */
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+
+    <!-- Header / Navegação -->
+    <header class="bg-[#4a0108] shadow-md p-4 sticky top-0 z-50"> <!-- Fundo do cabeçalho mais escuro -->
+        <nav class="container mx-auto flex justify-between items-center flex-wrap">
+            <a href="#home" class="text-2xl font-extrabold text-pink-400 rounded-md p-2 hover:bg-white/10 transition-colors"> <!-- Cor da logo ajustada para o fundo escuro -->
+                Cores & Sabor Doceria
+            </a>
+            <div class="block lg:hidden">
+                <button id="nav-toggle" data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-200 rounded-lg lg:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent"> <!-- Fundo transparente para a lista de navegação -->
+                    <li><a href="#home" class="block py-2 px-3 text-gray-100 rounded hover:bg-white/10 lg:hover:bg-transparent lg:hover:text-pink-400 lg:p-0 transition-colors font-medium">Início</a></li>
+                    <li><a href="#produtos" class="block py-2 px-3 text-gray-100 rounded hover:bg-white/10 lg:hover:bg-transparent lg:hover:text-pink-400 lg:p-0 transition-colors font-medium">Produtos</a></li>
+                    <li><a href="#sobre" class="block py-2 px-3 text-gray-100 rounded hover:bg-white/10 lg:hover:bg-transparent lg:hover:text-pink-400 lg:p-0 transition-colors font-medium">Sobre Nós</a></li>
+                    <li><a href="#contato" class="block py-2 px-3 text-gray-100 rounded hover:bg-white/10 lg:hover:bg-transparent lg:hover:text-pink-400 lg:p-0 transition-colors font-medium">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gradient-to-r from-pink-400 to-purple-500 h-screen flex items-center justify-center text-white overflow-hidden">
+        <img src="https://wallpapers.com/images/hd/pink-hearts-background-5jv4ejt1adew360j.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/fd929c/ffffff?text=Cores+e+Sabor+Doceria';" alt="Delícias de doces sortidos e coloridos" class="absolute inset-0 w-full h-full object-cover opacity-70">
+        <div class="relative z-10 text-center p-6 bg-black bg-opacity-40 rounded-lg shadow-xl max-w-2xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
+                Cores & Sabor Doceria
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 font-light animate-fade-in-up delay-200">
+                Onde cada mordida é uma celebração de alegria e doçura.
+            </p>
+            <a href="#produtos" class="inline-block bg-white text-pink-600 font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wide hover:bg-pink-100 transform hover:scale-105 transition-all duration-300 shadow-lg animate-fade-in-up delay-400">
+                Descubra Nossos Produtos
+            </a>
+        </div>
+    </section>
+
+    <!-- Sobre Nós Section -->
+    <!-- <section id="sobre" class="py-16 bg-white">  Fundo alterado para branco -->
+        <!-- <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-8">Sobre a Cores & Sabor</h2>
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+                <div class="lg:w-1/2 mb-8 lg:mb-0">
+                    <img src="https://placehold.co/600x400/ffe4e6/a30000?text=Nossa+Doceria" onerror="this.onerror=null;this.src='https://placehold.co/600x400/ffe4e6/a30000?text=Nossa+Doceria';" alt="Interior de uma doceria acolhedora" class="rounded-xl shadow-2xl w-full h-auto">
+                </div>
+                <div class="lg:w-1/2 text-left">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Na Cores & Sabor, acreditamos que a vida deve ser doce e colorida. Desde a nossa fundação, dedicamo-nos a criar doces artesanais que não só encantam o paladar, mas também os olhos.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Utilizamos apenas os ingredientes mais frescos e de alta qualidade, combinando receitas tradicionais com um toque de inovação. Cada bolo, cada brigadeiro e cada salgado é feito com carinho e atenção aos detalhes, garantindo uma experiência inesquecível.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Venha descobrir a paixão que colocamos em cada uma das nossas criações e traga mais sabor e cor para os seus momentos especiais!
+                    </p>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- Produtos Section -->
+    <section id="produtos" class="py-16 bg-pink-50">
+        <div class="container mx-auto px-6 text-center">
+            
+            <h2 class="text-4xl font-extrabold text-pink-700 mb-12">Nossos Produtos Deliciosos</h2>
+            
+            <!-- Categoria: Cardápio do Dia dos Namorados -->
+            <h3 class="text-3xl font-bold  mb-6 border-b-2 border-pink-300 pb-2 inline-block ">Cardápio Dia dos Namorados</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Produto: Te Amo Vida Chocolate Truffles -->
+               
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                   
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ffb3c1/a30000?text=Te+Amo+Vida';" alt="Caixa de bombons Te Amo Vida" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixa de Bombons "Te Amo Vida"</h4>
+                        <p class="text-gray-700 mb-4">Bombons de chocolate com a frase "Te Amo Vida" e corações dourados. Perfeito para presentear!</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 55,00</span>
+                        <button onclick="comprarProduto('Caixa de Bombons Te Amo Vida')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 1: Caixa com Coração Lapidado Recheado Tam. "G" + 3 docinhos personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ffb3c1/a30000?text=Caixa+Coracao+G+Grande';" alt="Caixa com Coração Lapidado Recheado Tam. G" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixa c/ Coração Lapidado Recheado Tam. "G" + 3 Docinhos</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 40,00</span>
+                        <button onclick="comprarProduto('Caixa com Coração Lapidado Recheado Tam. G + 3 Docinhos Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 2: Coração Lapidado Tam. "P" -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/c7d2fe/6b21a8?text=Coracao+P';" alt="Coração Lapidado Tam. P" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Coração Lapidado - Tam. "P"</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 10,00</span>
+                        <button onclick="comprarProduto('Coração Lapidado Tam. P')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 3: Caixinha com 9 docinhos personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/d8b4fe/7e22ce?text=Caixinha+9+Docinhos';" alt="Caixinha com 9 docinhos personalizados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixinha com 9 Docinhos Personalizados</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 20,00</span>
+                        <button onclick="comprarProduto('Caixinha com 9 Docinhos Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                 <!-- Produto 4: Caixinha com trufas/ou brigadeiros personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/fecdd3/a30000?text=Caixinha+Trufas+Brigadeiros';" alt="Caixinha com trufas ou brigadeiros personalizados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixinha c/ Trufas/Brigadeiros Personalizados</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 25,00</span>
+                        <button onclick="comprarProduto('Caixinha com Trufas ou Brigadeiros Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 5: Caixa com 4 trufas/ou brigadeiros personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/bfdbfe/2563eb?text=Caixa+4+Trufas+Brigadeiros';" alt="Caixa com 4 trufas ou brigadeiros personalizados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixa c/ 4 Trufas/Brigadeiros Personalizados</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 10,00</span>
+                        <button onclick="comprarProduto('Caixa com 4 Trufas ou Brigadeiros Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 6: Caixinha com Coração Lapidado Recheado + 5 docinhos personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/d8b4fe/7e22ce?text=Caixinha+Coracao+5+Docinhos';" alt="Caixinha com Coração Lapidado Recheado + 5 docinhos personalizados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixinha c/ Coração Lapidado Recheado + 5 Docinhos</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Morango e Leite.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 20,00</span>
+                        <button onclick="comprarProduto('Caixinha com Coração Lapidado Recheado + 5 Docinhos Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 7: Caixinha com 12 docinhos personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/a7f3d0/047857?text=Caixinha+12+Docinhos';" alt="Caixinha com 12 docinhos personalizados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixinha com 12 Docinhos Personalizados</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 25,00</span>
+                        <button onclick="comprarProduto('Caixinha com 12 Docinhos Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                 <!-- Produto 8: Caixinha com 6 docinhos personalizados -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/fde047/a16207?text=Caixinha+6+Docinhos';" alt="Caixinha com 6 docinhos personalizados" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Caixinha com 6 Docinhos Personalizados</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Leite e Morango.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 15,00</span>
+                        <button onclick="comprarProduto('Caixinha com 6 Docinhos Personalizados')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <!-- Produto 9: Coração Lapidado - Tamanho "M" -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.elo7.com.br/product/300x400/41D6E89/caixa-de-brigadeiros-te-amo-presentes-criativos.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x300/d1d5db/374151?text=Coracao+M';" alt="Coração Lapidado - Tamanho M" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Coração Lapidado - Tamanho "M"</h4>
+                        <p class="text-gray-700 mb-4">Com Brigadeiro, Beijinho, Morango e Leite.</p>
+                        <span class="text-pink-600 text-xl font-bold">R$ 20,00</span>
+                        <button onclick="comprarProduto('Coração Lapidado - Tamanho M')" type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full mt-4">
+                            Comprar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos (Opcional) -->
+    <section class="bg-purple-100 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-purple-700 mb-12">O que Nossos Clientes Dizem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-xl border-l-4 border-purple-500">
+                    <p class="text-lg text-gray-700 italic mb-4">"Os bolos da Cores & Sabor são simplesmente incríveis! O Red Velvet é o meu favorito. Qualidade impecável e sabor inesquecível."</p>
+                    <p class="font-semibold text-purple-600">- Ana Paula S.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl border-l-4 border-purple-500">
+                    <p class="text-lg text-gray-700 italic mb-4">"Sempre peço os salgados para minhas festas e nunca me arrependo. Crocantes e com recheio delicioso! Recomendo muito!"</p>
+                    <p class="font-semibold text-purple-600">- João M.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-16 bg-white"> <!-- Fundo alterado para branco -->
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-8">Entre em Contato</h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+                Adoraríamos ouvir você! Faça seu pedido ou tire suas dúvidas.
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0">
+                <!-- Seção de Localização Removida -->
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Fale Conosco</h3>
+                    <p class="text-gray-700 mb-2">Telefone: <a href="tel:+5586999646444" class="text-blue-600 hover:underline">(86) 99964-6444</a></p>
+                    <p class="text-gray-700">Email: <a href="mailto:contato@coresabor.com" class="text-blue-600 hover:underline">contato@coresabor.com</a></p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Redes Sociais</h3>
+                    <a href="https://www.instagram.com/coresabor.doceria" target="_blank" class="text-pink-600 hover:text-pink-800 text-lg font-medium transition-colors">
+                        <img src="https://placehold.co/30x30/fd7e14/ffffff?text=IG" onerror="this.onerror=null;this.src='https://placehold.co/30x30/fd7e14/ffffff?text=IG';" alt="Ícone Instagram" class="inline-block w-8 h-8 rounded-full mr-2">@coresabor.doceria
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Cores & Sabor Doceria. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#home" class="text-gray-400 hover:text-white transition-colors">Início</a>
+                <a href="#produtos" class="text-gray-400 hover:text-white transition-colors">Produtos</a>
+                <a href="#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre Nós</a>
+                <a href="#contato" class="text-gray-400 hover:text-white transition-colors">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flowbite JavaScript CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+        const WHATSAPP_NUMBER = "86999646444"; // Número de WhatsApp da doceria
+
+        function comprarProduto(nomeProduto) {
+            const mensagem = `Olá! Gostaria de mais informações sobre o produto: ${nomeProduto}.`;
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>
